@@ -44,7 +44,6 @@ Este proyecto es una aplicación de ejemplo desarrollada en Spring Boot que util
    - **Actualizar**: Se pueden actualizar entidades existentes.
    - **Eliminar**: Se pueden eliminar entidades `Person` de la base de datos.
 
-## 7. Conclusión
+
 Este proyecto demuestra cómo integrar Spring Boot con JPA e Hibernate para crear una aplicación CRUD básica. La configuración automática de Spring Boot y el uso de anotaciones de JPA e Hibernate simplifican el desarrollo y la gestión de la persistencia de datos.
 
-Espero que esta documentación sea útil para entender el funcionamiento del proyecto y las tecnologías utilizadas. Si tienes alguna pregunta o necesitas más detalles, no dudes en preguntar.
