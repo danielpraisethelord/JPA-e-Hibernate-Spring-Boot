@@ -44,6 +44,25 @@ Este proyecto es una aplicación de ejemplo desarrollada en Spring Boot que util
    - **Actualizar**: Se pueden actualizar entidades existentes.
    - **Eliminar**: Se pueden eliminar entidades `Person` de la base de datos.
 
+## 7. Nuevas Funcionalidades Agregadas
 
-Este proyecto demuestra cómo integrar Spring Boot con JPA e Hibernate para crear una aplicación CRUD básica. La configuración automática de Spring Boot y el uso de anotaciones de JPA e Hibernate simplifican el desarrollo y la gestión de la persistencia de datos.
+### Clase `Audit`
+Se ha añadido una nueva clase `Audit` que maneja las operaciones de auditoría mediante anotaciones JPA.
 
+- **`@Embeddable`**: Marca la clase `Audit` como una clase embebible, lo que significa que sus atributos pueden ser incrustados en otras entidades.
+
+#### Anotaciones de Ciclo de Vida
+
+- **`@PrePersist`**: Se utiliza para ejecutar un método justo antes de que una entidad sea persistida en la base de datos. Este método puede ser utilizado para inicializar valores predeterminados o realizar validaciones antes de que la entidad se inserte en la base de datos.
+- **`@PreUpdate`**: Se utiliza para ejecutar un método justo antes de que una entidad sea actualizada en la base de datos. Este método puede ser utilizado para actualizar valores, realizar validaciones, o registrar cambios antes de que la entidad se actualice.
+- **`@PreRemove`**: Se utiliza para ejecutar un método justo antes de que una entidad sea eliminada de la base de datos. Este método puede ser utilizado para realizar tareas de limpieza o validaciones antes de que la entidad sea eliminada.
+- **`@PostPersist`**: Se utiliza para ejecutar un método justo después de que una entidad haya sido persistida en la base de datos. Este método puede ser utilizado para realizar operaciones de seguimiento o notificación una vez que la entidad ha sido insertada.
+- **`@PostUpdate`**: Se utiliza para ejecutar un método justo después de que una entidad haya sido actualizada en la base de datos. Este método puede ser utilizado para realizar operaciones de seguimiento o notificación una vez que la entidad ha sido actualizada.
+- **`@PostRemove`**: Se utiliza para ejecutar un método justo después de que una entidad haya sido eliminada de la base de datos. Este método puede ser utilizado para realizar operaciones de seguimiento o notificación una vez que la entidad ha sido eliminada.
+- **`@PostLoad`**: Se utiliza para ejecutar un método justo después de que una entidad ha sido cargada desde la base de datos. Este método puede ser utilizado para inicializar valores que no están persistidos en la base de datos o para realizar alguna lógica adicional una vez que la entidad ha sido cargada.
+
+### Uso de `Audit` en la clase `Person`
+- **`@Embedded`**: Se utiliza en una entidad para indicar que una instancia de una clase embebible se debe almacenar como parte de esta entidad. En este caso, la clase `Person` incluye una instancia de `Audit`, lo que permite la auditoría de las operaciones de persistencia y actualización.
+
+## 8. Conclusión
+Este proyecto demuestra cómo integrar Spring Boot con JPA e Hibernate para crear una aplicación CRUD básica. La configuración automática de Spring Boot y el uso de anotaciones de JPA e Hibernate simplifican el desarrollo y la gestión de la persistencia de datos. Además, la adición de la clase `Audit` y las anotaciones de ciclo de vida proporcionan una manera eficiente de manejar la auditoría de las operaciones en las entidades.

@@ -1,6 +1,7 @@
 package com.app.springboot_jpa.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -122,6 +123,16 @@ public class Person {
     @Column(name = "programing_language")
     private String programingLanguage;
 
+    /*
+     * @Embedded
+     * Función: Se utiliza en una entidad para indicar que una instancia de una
+     * clase embebible se debe almacenar como parte de esta entidad.
+     * Uso: Se utiliza en una entidad para incluir los atributos de una clase
+     * embebible como si fueran atributos propios de la entidad.
+     */
+    @Embedded
+    private Audit audit = new Audit();
+
     /**
      * Si tenemos un constructor personalizado donde pasaremos parámetros, estamos
      * obligados siempre a tener un constructor vacío, ya que eso lo maneja JPA, es
@@ -184,6 +195,8 @@ public class Person {
                 ", name='" + getName() + "'" +
                 ", lastname='" + getLastname() + "'" +
                 ", programingLanguage='" + getProgramingLanguage() + "'" +
+                ", createAt='" + audit.getCreateAt() + "'" +
+                ", updateAt='" + audit.getUpdatedAt() + "'" +
                 "}";
     }
 }
